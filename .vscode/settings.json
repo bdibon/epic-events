@@ -1,0 +1,17 @@
+{
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.linting.flake8Args": [
+    "--exclude",
+    "./config/settings.py */migrations/*"
+  ],
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["-l 79"],
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "[django-html]": {
+    "editor.formatOnSave": false
+  }
+}
