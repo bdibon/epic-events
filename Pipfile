@@ -5,8 +5,11 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 
 [dev-packages]
+black = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.8"
