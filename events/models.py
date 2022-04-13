@@ -10,7 +10,7 @@ class Event(models.Model):
         ("P", "planned"),
         ("O", "over"),
     )
-
+    name = models.CharField(max_length=128)
     attendees = models.IntegerField()
     date = models.DateField()
     status = models.CharField(max_length=1, choices=EVENT_PHASES)
@@ -20,15 +20,47 @@ class Event(models.Model):
     support_consultant = models.ForeignKey(Employee, on_delete=models.PROTECT)
     client = models.ForeignKey(Client, on_delete=models.PROTECT)
 
+    def __str__(self):
+        return self.name
+
 
 class Contract(models.Model):
-    # When a contract is signed, make sure a related event is created
     status = models.BooleanField(default=False)
     amount = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # When a contract is created, make sure the client's  is_prospect attribute is set to False
     client = models.ForeignKey(Client, on_delete=models.PROTECT)
-    sales_person = models.ForeignKey(Employee, on_delete=models.PROTECT)
-    event = models.ForeignKey(Event, on_delete=models.PROTECT, null=True)
+    sales_person = models.ForeignKey(
+        Employee,
+        on_delete=models.PROTECT,
+        limit_choices_to={"role": Employee.SALES_PERSON},
+    )
+    event = models.OneToOneField(
+        Event,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        constraints = [
+            # When a contract is signed, make sure a related event is created.
+            models.CheckConstraint(
+                check=(
+                    models.Q(status__exact=False)
+                    & models.Q(event__isnull=True)
+                )
+                | (
+                    models.Q(status__exact=True)
+                    & models.Q(event__isnull=False)
+                ),
+                name="status_match_event",
+            )
+        ]
+
+    def __str__(self):
+        return (
+            f"{self.client.company.name} - "
+            f"{self.client} / {self.sales_person}"
+        )
