@@ -7,6 +7,7 @@ from django.forms import ModelForm, ValidationError
 
 from .models import Contract, Event
 from employees.models import Employee
+from clients.models import Client
 
 
 class ContractAdminForm(ModelForm):
@@ -17,6 +18,7 @@ class ContractAdminForm(ModelForm):
     def clean(self):
         cleaned_data = super().clean()
 
+        # Deal with the contract status and event constraint.
         contract_status = cleaned_data["status"]
         related_event = cleaned_data["event"]
 
@@ -31,6 +33,15 @@ class ContractAdminForm(ModelForm):
                 _("A signed contract must have a related event.")
             )
 
+        # Prevent other salespersons to sign the contract.
+        client = cleaned_data["client"]
+        sales_person = cleaned_data["sales_person"]
+        if client.sales_contact != sales_person:
+            raise ValidationError(
+                _(
+                    "The client that signs the contract with the salesperson must be in his portfolio."  # NOQA
+                )
+            )
         return cleaned_data
 
 
@@ -81,6 +92,9 @@ class ContractAdmin(admin.ModelAdmin):
             if obj is None:
                 form.base_fields["sales_person"].initial = request.user
             form.base_fields["sales_person"].disabled = True
+            form.base_fields["client"].queryset = Client.objects.filter(
+                sales_contact=request.user
+            )
 
         return form
 
