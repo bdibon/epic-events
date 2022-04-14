@@ -1,4 +1,5 @@
 import copy
+import datetime
 
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
@@ -99,6 +100,29 @@ class ContractAdmin(admin.ModelAdmin):
         return form
 
 
+class EventAdminForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = (
+            "name",
+            "attendees",
+            "date",
+            "status",
+            "support_consultant",
+            "client",
+        )
+
+    def clean_date(self):
+        date = self.cleaned_data["date"]
+
+        if date < datetime.date.today():
+            raise ValidationError(
+                _("You cannot set an event's date in the past.")
+            )
+
+        return date
+
+
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = (
@@ -115,7 +139,49 @@ class EventAdmin(admin.ModelAdmin):
         "client__company__name",
         "support_consultant__email",
     )
+    form = EventAdminForm
 
     @admin.display(description=_("Company"))
     def get_company(self, obj):
         return obj.client.company.name
+
+    def has_change_permission(self, request, obj=None):
+        current_user = request.user
+
+        if current_user.role == Employee.MANAGER:
+            return True
+
+        if current_user.role == Employee.SALES_PERSON:
+            if obj is None:
+                return False
+            else:
+                return obj.contract.sales_person == current_user
+
+        if current_user.role == Employee.SUPPORT_CONSULTANT:
+            if obj is None:
+                return False
+            else:
+                return obj.support_consultant == current_user
+        return False
+
+    def get_form(self, request, obj=None, **kwargs):
+        base_form = super().get_form(request, obj, **kwargs)
+        form = copy.deepcopy(base_form)
+
+        if "support_consultant" in form.base_fields:
+            form.base_fields[
+                "support_consultant"
+            ].queryset = Employee.objects.filter(
+                role=Employee.SUPPORT_CONSULTANT
+            )
+
+        current_user = request.user
+        if (
+            current_user.role == Employee.SALES_PERSON
+            and "client" in form.base_fields
+        ):
+            form.base_fields["client"].queryset = Client.objects.filter(
+                sales_contact=current_user
+            )
+
+        return form
