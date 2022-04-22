@@ -8,7 +8,6 @@ from employees.models import Employee
 
 
 class ClientModelViewSet(viewsets.ModelViewSet):
-    queryset = Client.objects.all()
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticated, ClientObjectPermissions]
 
@@ -24,3 +23,17 @@ class ClientModelViewSet(viewsets.ModelViewSet):
         return Response(
             serializer.data, status=status.HTTP_201_CREATED, headers=headers
         )
+
+    def get_queryset(self):
+        queryset = Client.objects.all()
+        last_name = self.request.query_params.get("last_name")
+        email = self.request.query_params.get("email")
+        query_params = {}
+
+        if last_name is not None:
+            query_params["last_name__icontains"] = last_name
+        if email is not None:
+            query_params["email__iexact"] = email
+
+        queryset = queryset.filter(**query_params)
+        return queryset
