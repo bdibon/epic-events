@@ -5,13 +5,26 @@ from employees.models import Employee
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=140)
+    name = models.CharField(max_length=140, unique=True)
 
     class Meta:
         verbose_name_plural = "companies"
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get_company_by_name_or_id(cls, **kwargs):
+        pk = kwargs.pop("id", None)
+        name = kwargs.pop("name", None)
+
+        if pk:
+            return cls.objects.get(pk=pk)
+        if name:
+            company, created = cls.objects.get_or_create(name=name)
+            return company
+
+        return None
 
 
 class Client(models.Model):
@@ -34,9 +47,9 @@ class Client(models.Model):
     class Meta:
         constraints = [
             models.CheckConstraint(
-                check=models.Q(email__isnull=False)
-                | models.Q(phone__isnull=False)
-                | models.Q(mobile__isnull=False),
+                check=~models.Q(email__exact="")
+                | ~models.Q(phone__exact="")
+                | ~models.Q(mobile__exact=""),
                 name="is_reachable",
             ),
         ]
