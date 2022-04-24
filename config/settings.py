@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "rest_framework",
     "rest_framework_simplejwt",
+    "django_filters",
     # Domain apps.
     "employees.apps.EmployeesConfig",
     "clients.apps.ClientsConfig",
@@ -141,7 +142,9 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated"
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication"
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ],
 }
 
