@@ -13,3 +13,18 @@ def upgrade_prospect_to_client(sender, **kwargs):
         if client.is_prospect is True:
             client.is_prospect = False
             client.save()
+
+
+@receiver(post_save, sender=Contract)
+def sync_contract_client_with_event(sender, **kwargs):
+    """
+    Make sure that when a signed contract's client is changed,
+    this applies to the related event.
+    """
+    contract = kwargs["instance"]
+
+    if contract.status:
+        event = contract.event
+        if event.client != contract.client:
+            event.client = contract.client
+            event.save()

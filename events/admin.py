@@ -49,12 +49,12 @@ class ContractAdminForm(ModelForm):
 @admin.register(Contract)
 class ContractAdmin(admin.ModelAdmin):
     list_display = (
+        "event",
         "get_company",
         "client",
         "sales_person",
         "amount",
         "status",
-        "event",
     )
     list_filter = ("client__company", "status")
     search_fields = (
@@ -121,6 +121,36 @@ class EventAdminForm(ModelForm):
             )
 
         return date
+
+    def clean_status(self):
+        status = self.cleaned_data["status"]
+        draft_error = ValidationError(
+            _("An event without a contract has to be a draft.")
+        )
+
+        if self.instance._state.adding is True:
+            if status != Event.EVENT_DRAFT:
+                raise draft_error
+        else:
+            contract = getattr(self.instance, "contract", None)
+
+            if contract is None and status != Event.EVENT_DRAFT:
+                raise draft_error
+
+        return status
+
+    def clean_client(self):
+        client = self.cleaned_data["client"]
+        contract = getattr(self.instance, "contract", None)
+
+        if contract is not None:
+            if client != contract.client:
+                raise ValidationError(
+                    _(
+                        "Event's client must be the same as the contract's client."
+                    )
+                )
+        return client
 
 
 @admin.register(Event)
