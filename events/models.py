@@ -26,7 +26,11 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    support_consultant = models.ForeignKey(Employee, on_delete=models.PROTECT)
+    support_consultant = models.ForeignKey(
+        Employee,
+        on_delete=models.PROTECT,
+        limit_choices_to={"role": Employee.SUPPORT_CONSULTANT},
+    )
     client = models.ForeignKey(Client, on_delete=models.PROTECT)
 
     def __str__(self):
