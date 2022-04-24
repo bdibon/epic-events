@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
 from .models import Client, Company
@@ -42,7 +43,7 @@ class ClientSerializer(serializers.ModelSerializer):
         is_reachable = email or phone or mobile
 
         if not is_reachable:
-            raise serializers.ValidationError("Client must be reachable.")
+            raise serializers.ValidationError(_("Client must be reachable."))
         return data
 
     def create(self, validated_data):
