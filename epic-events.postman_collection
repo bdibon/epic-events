@@ -1,0 +1,920 @@
+{
+	"info": {
+		"_postman_id": "7ab30ac5-ec80-4b9e-a2d5-bf699c169fc8",
+		"name": "Epic Events",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNDcxNDgxLCJpYXQiOjE2NTA0NDY0MzQsImp0aSI6Ijk4MTc5MTEyYTNhYzRlMjhhNzcwZTRkYjYwNDU4ZDVlIiwidXNlcl9pZCI6Nn0.W6EJX107r-GhJy9rxbP9AAGnNZH4MszmtujQLxntJzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/employees/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employees",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwMDE1NTU0LCJpYXQiOjE2NTAwMTI1MTksImp0aSI6IjVlZGNiYTQ3NjY0YjRjN2M5YzZmMmQ3MzNiMmMyOTgxIiwidXNlcl9pZCI6Nn0.RhLIW-0h_kyNBQgUh2PU4C98l1eA35ZRG7mq3IWTxmo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/employees/:id/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employees",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNjUwMDM2LCJpYXQiOjE2NTA2NDY0MzYsImp0aSI6ImEyNDU2ODc3MTFlMDQxMzFiYTFiMmFkZGJmM2JkZjE4IiwidXNlcl9pZCI6Nn0.XoAFuLxarmJ8V9NY2MVf_etFLycxJjiE6xakA20EMWs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/clients?last_name=sky",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "last_name",
+									"value": "sky"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNDQ2NzM0LCJpYXQiOjE2NTA0NDY0MzQsImp0aSI6ImZhYTllZWY1NTlhMDRlMTRiZTZkNTIwODUzMTZhMDQ3IiwidXNlcl9pZCI6Nn0.vHL2QBa5C8ZcCPExpLbenvJV8v_S5SMjXX8O2mIjp_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/clients/:clientId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								":clientId"
+							],
+							"variable": [
+								{
+									"key": "clientId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNjQwNjIwLCJpYXQiOjE2NTA2MzcwMjAsImp0aSI6IjU5MTE3ZjMwZmYzNTRiMjhhYzcxNzYyMzU0MDU2M2ZkIiwidXNlcl9pZCI6Nn0.vP5xPTxsIoqA0Hd8Oe9WQ05cjhyvlzh9EA_OjErc_n0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"first_name\": \"Sasuke\",\r\n    \"last_name\": \"Kun\",\r\n    \"email\": \"darksasuke@example.com\",\r\n    \"phone\": \"0965656565\",\r\n    \"mobile\": \"\",\r\n    \"created_at\": \"2022-04-22T11:34:13.863884Z\",\r\n    \"updated_at\": \"2022-04-22T11:34:13.864022Z\",\r\n    \"is_prospect\": true,\r\n    \"sales_contact\": {\r\n        \"id\": 6,\r\n        \"first_name\": \"Gimli\",\r\n        \"last_name\": \"\",\r\n        \"email\": \"gimli@epicevents.com\",\r\n        \"role\": \"SP\"\r\n    },\r\n    \"company\": {\r\n        \"id\": 3,\r\n        \"name\": \"Konoha\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/clients/:clientId/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								":clientId",
+								""
+							],
+							"variable": [
+								{
+									"key": "clientId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNjQwNjIwLCJpYXQiOjE2NTA2MzcwMjAsImp0aSI6IjU5MTE3ZjMwZmYzNTRiMjhhYzcxNzYyMzU0MDU2M2ZkIiwidXNlcl9pZCI6Nn0.vP5xPTxsIoqA0Hd8Oe9WQ05cjhyvlzh9EA_OjErc_n0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\": \"0601010101\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/clients/:clientId/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								":clientId",
+								""
+							],
+							"variable": [
+								{
+									"key": "clientId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNDQ3MDY3LCJpYXQiOjE2NTA0NDY0MzQsImp0aSI6IjUyY2MzMzc4ZmZjNzQ0MWU4MWYwNmZlYzVkNDEyMjFiIiwidXNlcl9pZCI6Nn0.-QGb0vX8nhk4nL0kFh5i09gKdMLQZC7ZdI9AKBgrfco",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/clients/:clientId/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								":clientId",
+								""
+							],
+							"variable": [
+								{
+									"key": "clientId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwNjMxMDM1LCJpYXQiOjE2NTA2Mjc0MzUsImp0aSI6IjBmYjg2YjcyNzU2ZTRjNTBhZGIyNmE3ZTBkNWE2ZjhhIiwidXNlcl9pZCI6NH0.C1CTAxLc253dgKbT4eHiLx6CwiQtfWVdH9iKrZ2ee_c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Sakura\",\r\n    \"last_name\": \"Chan\",\r\n    \"sales_contact\": {\r\n       \"id\": 3\r\n    },\r\n    \"company\": {\r\n        \"name\": \"Konoha\"\r\n    },\r\n    \"email\": \"sakurachan@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/clients/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "obtain token pair",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"frodo@epicevents.com\",\r\n    \"password\": \"azerty&é\\\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1MDYyMDI2NiwiaWF0IjoxNjUwNTMzODY2LCJqdGkiOiJjMmZlNDBiN2Y4YWU0YzY2OWViN2VmZWViMDQ2ZmEyYSIsInVzZXJfaWQiOjZ9.qnmnBS4mMtrVbrTXyy8J7WSnqrsF1Eb2Sl9FC-RPiUA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODI1NzcwLCJpYXQiOjE2NTA4MjIxNzAsImp0aSI6ImQ5ODRiNjBmMzlhODRmOTc4ZDE0NWJkMDk0M2IwNzM4IiwidXNlcl9pZCI6NH0.0DQ5FFDhnqkD3qYuskkp827rJ1N9FZFcu5g3qOaQYow",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/events?search=vader",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events"
+							],
+							"query": [
+								{
+									"key": "client_name",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "client_email",
+									"value": "lordvader@deathstar.com",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2022-04-30",
+									"disabled": true
+								},
+								{
+									"key": "ordering",
+									"value": "date",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "vader"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE4ODY5LCJpYXQiOjE2NTA4MTUyNjksImp0aSI6ImM3Y2QyNzM1YjVjYTQzMmM4MTA4ZGY0NTNhMDg2MWU1IiwidXNlcl9pZCI6NH0.IxC6qZshU6xr9jNXZQ_7-5uJKtuUxS6pH7aaXnOp-pY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/events/:event_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								":event_id"
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODA5NzE0LCJpYXQiOjE2NTA4MDYxMTQsImp0aSI6ImU4YmExZjI2ZmIyZDQxZjZhMTU1ZmViZjQ3MGY5NWEzIiwidXNlcl9pZCI6Mn0.jSBrlMk8sqiVU-GxKMog1t0s2TbZAUe8gcSe7jDL8zI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"support_consultant\": 4,\r\n    \"contract\": 1,\r\n    \"name\": \"Death Star Party\",\r\n    \"attendees\": 21,\r\n    \"date\": \"2022-04-30\",\r\n    \"status\": \"P\",\r\n    \"client\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/events/:event_id/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								":event_id",
+								""
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE4ODY5LCJpYXQiOjE2NTA4MTUyNjksImp0aSI6ImM3Y2QyNzM1YjVjYTQzMmM4MTA4ZGY0NTNhMDg2MWU1IiwidXNlcl9pZCI6NH0.IxC6qZshU6xr9jNXZQ_7-5uJKtuUxS6pH7aaXnOp-pY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attendees\": 101\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/events/:event_id/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								":event_id",
+								""
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODEwNTQ2LCJpYXQiOjE2NTA4MDY5NDYsImp0aSI6ImVmMjY5NjQxZjMyMTQ1MzdhZmY3M2I4YmViZDRhZmJiIiwidXNlcl9pZCI6Nn0.1gVoWE2RZ78ASGMpZO4viqYLdUQ3B8Fk60xAggXVz5o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/events/:event_id/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								":event_id",
+								""
+							],
+							"variable": [
+								{
+									"key": "event_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODEwNDMxLCJpYXQiOjE2NTA4MDY4MzEsImp0aSI6ImIxZmI5NDdiZWE0MTQ3ZmI4YWNjMGQ2NDlkOTY3ODRlIiwidXNlcl9pZCI6Mn0.riOKw83r2NnBUznZO2QSP_8xWf9wRUOK0Znp6q4VwfU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Second event created from API\",\r\n    \"attendees\": \"800\",\r\n    \"date\": \"2022-06-08\",\r\n    \"status\": \"D\",\r\n    \"support_consultant\": 9,\r\n    \"client\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/events/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contracts",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE4ODY5LCJpYXQiOjE2NTA4MTUyNjksImp0aSI6ImM3Y2QyNzM1YjVjYTQzMmM4MTA4ZGY0NTNhMDg2MWU1IiwidXNlcl9pZCI6NH0.IxC6qZshU6xr9jNXZQ_7-5uJKtuUxS6pH7aaXnOp-pY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/contracts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contracts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE4ODY5LCJpYXQiOjE2NTA4MTUyNjksImp0aSI6ImM3Y2QyNzM1YjVjYTQzMmM4MTA4ZGY0NTNhMDg2MWU1IiwidXNlcl9pZCI6NH0.IxC6qZshU6xr9jNXZQ_7-5uJKtuUxS6pH7aaXnOp-pY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/contracts/:contract_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contracts",
+								":contract_id"
+							],
+							"variable": [
+								{
+									"key": "contract_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE4MTk3LCJpYXQiOjE2NTA4MTQ1OTcsImp0aSI6IjM0MjgwODU4ZjBiYjRhOWZiZWQ5MjY1MTc1YjMxMjk1IiwidXNlcl9pZCI6Mn0.MIs8WtPjgPXHfqrrCenMQu-6Qt58iTVf-CIn7_AmMk0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"status\": true,\r\n    \"amount\": 60000,\r\n    \"created_at\": \"2022-04-23T12:52:53.043497Z\",\r\n    \"updated_at\": \"2022-04-23T12:52:53.043510Z\",\r\n    \"client\": 2,\r\n    \"sales_person\": 6,\r\n    \"event\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/contracts/:contract_id/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contracts",
+								":contract_id",
+								""
+							],
+							"variable": [
+								{
+									"key": "contract_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE4ODY5LCJpYXQiOjE2NTA4MTUyNjksImp0aSI6ImM3Y2QyNzM1YjVjYTQzMmM4MTA4ZGY0NTNhMDg2MWU1IiwidXNlcl9pZCI6NH0.IxC6qZshU6xr9jNXZQ_7-5uJKtuUxS6pH7aaXnOp-pY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 80000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/contracts/:contract_id/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contracts",
+								":contract_id",
+								""
+							],
+							"variable": [
+								{
+									"key": "contract_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE1MzM2LCJpYXQiOjE2NTA4MTE3MzYsImp0aSI6ImMxNzJlMjI1NzdhODQ2MzY4YzM4MjMxNDVlMTAzZDdlIiwidXNlcl9pZCI6Nn0.wYmWOgAHJhdHNxeD6xmcksXDn1zkFf8JTw1_MPDOAoU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/contracts/:contract_id/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contracts",
+								":contract_id",
+								""
+							],
+							"variable": [
+								{
+									"key": "contract_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUwODE1MzM2LCJpYXQiOjE2NTA4MTE3MzYsImp0aSI6ImMxNzJlMjI1NzdhODQ2MzY4YzM4MjMxNDVlMTAzZDdlIiwidXNlcl9pZCI6Nn0.wYmWOgAHJhdHNxeD6xmcksXDn1zkFf8JTw1_MPDOAoU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": true,\r\n    \"amount\": 60000,\r\n    \"client\": 2,\r\n    \"sales_person\": 6,\r\n    \"event\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/contracts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contracts",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
