@@ -184,8 +184,10 @@ class EventAdmin(admin.ModelAdmin):
         if current_user.role == Employee.SALES_PERSON:
             if obj is None:
                 return False
-            else:
+            if getattr(obj, "contract", None) is not None:
                 return obj.contract.sales_person == current_user
+            else:
+                return True
 
         if current_user.role == Employee.SUPPORT_CONSULTANT:
             if obj is None:
