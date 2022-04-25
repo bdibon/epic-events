@@ -7,33 +7,98 @@ from ..models import Employee as EmployeeModel
 
 def create_groups(apps, schema_migration):
     Employee = apps.get_model("employees", "Employee")
+    Client = apps.get_model("clients", "Client")
+    Company = apps.get_model("clients", "Company")
+    Contract = apps.get_model("events", "Contract")
+    Event = apps.get_model("events", "Event")
     Group = apps.get_model("auth", "Group")
     Permission = apps.get_model("auth", "Permission")
+    ContentType = apps.get_model("contenttypes", "ContentType")
 
-    add_employee = Permission.objects.get(codename="add_employee")
-    change_employee = Permission.objects.get(codename="change_employee")
-    delete_employee = Permission.objects.get(codename="delete_employee")
-    view_employee = Permission.objects.get(codename="view_employee")
+    add_employee, _ = Permission.objects.get_or_create(
+        codename="add_employee",
+        content_type=ContentType.objects.get_for_model(Employee),
+    )
+    change_employee, _ = Permission.objects.get_or_create(
+        codename="change_employee",
+        content_type=ContentType.objects.get_for_model(Employee),
+    )
+    delete_employee, _ = Permission.objects.get_or_create(
+        codename="delete_employee",
+        content_type=ContentType.objects.get_for_model(Employee),
+    )
+    view_employee, _ = Permission.objects.get_or_create(
+        codename="view_employee",
+        content_type=ContentType.objects.get_for_model(Employee),
+    )
 
-    add_client = Permission.objects.get(codename="add_client")
-    change_client = Permission.objects.get(codename="change_client")
-    delete_client = Permission.objects.get(codename="delete_client")
-    view_client = Permission.objects.get(codename="view_client")
+    add_client, _ = Permission.objects.get_or_create(
+        codename="add_client",
+        content_type=ContentType.objects.get_for_model(Client),
+    )
+    change_client, _ = Permission.objects.get_or_create(
+        codename="change_client",
+        content_type=ContentType.objects.get_for_model(Client),
+    )
+    delete_client, _ = Permission.objects.get_or_create(
+        codename="delete_client",
+        content_type=ContentType.objects.get_for_model(Client),
+    )
+    view_client, _ = Permission.objects.get_or_create(
+        codename="view_client",
+        content_type=ContentType.objects.get_for_model(Client),
+    )
 
-    add_company = Permission.objects.get(codename="add_company")
-    change_company = Permission.objects.get(codename="change_company")
-    delete_company = Permission.objects.get(codename="delete_company")
-    view_company = Permission.objects.get(codename="view_company")
+    add_company, _ = Permission.objects.get_or_create(
+        codename="add_company",
+        content_type=ContentType.objects.get_for_model(Company),
+    )
+    change_company, _ = Permission.objects.get_or_create(
+        codename="change_company",
+        content_type=ContentType.objects.get_for_model(Company),
+    )
+    delete_company, _ = Permission.objects.get_or_create(
+        codename="delete_company",
+        content_type=ContentType.objects.get_for_model(Company),
+    )
+    view_company, _ = Permission.objects.get_or_create(
+        codename="view_company",
+        content_type=ContentType.objects.get_for_model(Company),
+    )
 
-    add_contract = Permission.objects.get(codename="add_contract")
-    change_contract = Permission.objects.get(codename="change_contract")
-    delete_contract = Permission.objects.get(codename="delete_contract")
-    view_contract = Permission.objects.get(codename="view_contract")
+    add_contract, _ = Permission.objects.get_or_create(
+        codename="add_contract",
+        content_type=ContentType.objects.get_for_model(Contract),
+    )
+    change_contract, _ = Permission.objects.get_or_create(
+        codename="change_contract",
+        content_type=ContentType.objects.get_for_model(Contract),
+    )
+    delete_contract, _ = Permission.objects.get_or_create(
+        codename="delete_contract",
+        content_type=ContentType.objects.get_for_model(Contract),
+    )
+    view_contract, _ = Permission.objects.get_or_create(
+        codename="view_contract",
+        content_type=ContentType.objects.get_for_model(Contract),
+    )
 
-    add_event = Permission.objects.get(codename="add_event")
-    change_event = Permission.objects.get(codename="change_event")
-    delete_event = Permission.objects.get(codename="delete_event")
-    view_event = Permission.objects.get(codename="view_event")
+    add_event, _ = Permission.objects.get_or_create(
+        codename="add_event",
+        content_type=ContentType.objects.get_for_model(Event),
+    )
+    change_event, _ = Permission.objects.get_or_create(
+        codename="change_event",
+        content_type=ContentType.objects.get_for_model(Event),
+    )
+    delete_event, _ = Permission.objects.get_or_create(
+        codename="delete_event",
+        content_type=ContentType.objects.get_for_model(Event),
+    )
+    view_event, _ = Permission.objects.get_or_create(
+        codename="view_event",
+        content_type=ContentType.objects.get_for_model(Event),
+    )
 
     # Sales.
     salesperson_permissions = [
@@ -108,7 +173,11 @@ def create_groups(apps, schema_migration):
 class Migration(migrations.Migration):
 
     dependencies = [
+        # ('contenttypes', '__latest__'), # required or emit_post_migrate_signal will bail out
+        # ('auth', '__latest__'), # possibly required if using guardian / allauth
         ("employees", "0002_alter_employee_is_staff"),
+        ("events", "0001_initial"),
+        # ("sessions", "0001_initial"),
     ]
 
     operations = [migrations.RunPython(create_groups)]
